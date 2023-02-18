@@ -1,0 +1,93 @@
+@import url(https://fonts.googleapis.com/css?family=Work+Sans:300,600);
+
+body {
+    font-size: 20px;
+    font-family: 'Work Sans', sans-serif;
+    color: #333;
+    font-weight: 300;
+    text-align: center;
+    background-color: #f8f6f0;
+}
+
+h1 {
+    font-weight: 300;
+    margin-top: 25px;
+    padding: 10px;
+    font-size: 25pt;
+}
+
+.question {
+    font-size: 30px;
+    margin-top: 100px;
+    height: 100%;
+    width: 100%;
+
+}
+
+.answers {
+    margin-bottom: 20px;
+    text-align: left;
+    display: inline-block;
+    height: 100%;
+    margin-bottom: 100px;
+    font-size: 20px;
+}
+
+.answers label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+button {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 22px;
+    background-color: #279;
+    color: #fff;
+    border: 0px;
+    border-radius: 3px;
+    padding: 20px;
+    cursor: pointer;
+    margin-top: 200px;
+    display: flex;
+}
+
+button:hover {
+    background-color: #38a;
+}
+
+.slide {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.active-slide {
+    opacity: 1;
+    z-index: 2;
+}
+
+.quiz-container {
+    height: 100px;
+    margin-top: 50px;
+}
+
+.navbar {
+    display: inline-flex;
+    font-family: 'Work Sans', sans-serif;
+    text-align: center;
+    line-height: 100%;
+}
+
+.paragraph {
+    height: 400px;
+    width: 400px;
+    list-style: none;
+    padding: 5px;
+    font-size: 1.3rem;
+    justify-content: center;
+    max-width: 100%;
+}
