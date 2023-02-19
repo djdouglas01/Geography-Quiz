@@ -48,7 +48,7 @@ button {
     padding: 20px;
     cursor: pointer;
     margin-top: 200px;
-    display: flex;
+
 }
 
 button:hover {
@@ -73,6 +73,7 @@ button:hover {
 .quiz-container {
     height: 100px;
     margin-top: 50px;
+    display: flex;
 }
 
 .navbar {
@@ -80,6 +81,8 @@ button:hover {
     font-family: 'Work Sans', sans-serif;
     text-align: center;
     line-height: 100%;
+    justify-content: center;
+    background-color: black;
 }
 
 .paragraph {
@@ -90,4 +93,9 @@ button:hover {
     font-size: 1.3rem;
     justify-content: center;
     max-width: 100%;
+}
+
+#safeTimer {
+    display: inline-block;
+    font-size: 20pt;
 }
