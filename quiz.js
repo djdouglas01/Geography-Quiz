@@ -99,7 +99,6 @@ window.onload = function () {
             showSlide(currentSlide - 1);
         }
 
-
         const quizContainer = document.getElementById('quiz');
         const resultsContainer = document.getElementById('results');
         const submitButton = document.getElementById('submit');
@@ -195,7 +194,7 @@ window.onload = function () {
                 correctAnswer: "c"
             },
             {
-                question: "In which European city is not located on the Danube",
+                question: "Which European city is not located on the Danube River",
                 answers: {
                     a: "Prague",
                     b: "Budapest",
@@ -209,7 +208,6 @@ window.onload = function () {
 
         buildQuiz();
 
-
         const previousButton = document.getElementById("previous");
         const nextButton = document.getElementById("next");
         const slides = document.querySelectorAll(".slide");
@@ -218,10 +216,22 @@ window.onload = function () {
 
         showSlide(currentSlide);
 
-
-
         submitButton.addEventListener('click', showResults);
         previousButton.addEventListener("click", showPreviousSlide);
         nextButton.addEventListener("click", showNextSlide);
+
     })();
+
 }
+
+var count = 15;
+var interval = setInterval(function () {
+    document.getElementById('safeTimer').innerHTML = count;
+    count--;
+    if (count === 0) {
+        clearInterval(interval);
+        document.getElementById('safeTimer').innerHTML = 'Done';
+    }
+}, 1000);
+
+
