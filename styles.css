@@ -82,7 +82,6 @@ button:hover {
     text-align: center;
     line-height: 100%;
     justify-content: center;
-    background-color: black;
 }
 
 .paragraph {
@@ -99,3 +98,21 @@ button:hover {
     display: inline-block;
     font-size: 20pt;
 }
+
+.nav-pills {
+
+    border-radius: 20px;
+}
+
+.nav-link.active {
+    display: inline-block;
+    border-radius: 20px;
+    color: black;
+}
+
+.radio {
+    color: black;
+    border-radius: 50%;
+    margin-top: 20px;
+}
+
