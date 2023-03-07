@@ -104,136 +104,132 @@ window.onload = function () {
             correctAnswer: "A"
         },
     ];
-        function buildQuiz() {
+    function buildQuiz() {
 
-            const output = [];
+        const output = [];
 
-            myQuestions.forEach(
-                (currentQuestion, questionNumber) => {
+        myQuestions.forEach(
+            (currentQuestion, questionNumber) => {
 
-                    const answers = [];
-
-
-                    for (letter in currentQuestion.answers) {
+                const answers = [];
 
 
-                        answers.push(
-                            `<label>
+                for (letter in currentQuestion.answers) {
+
+
+                    answers.push(
+                        `<label>
                     <input type="radio" class="radio" name="question${questionNumber}" value="${letter}">
                     ${letter} :
                     ${currentQuestion.answers[letter]}
                   </label>`
-                        );
-                    }
+                    );
+                }
 
 
-                    output.push(
-                        `<div class="slide">
+                output.push(
+                    `<div class="slide">
                   <div class="question"> ${currentQuestion.question} </div>
                   <div class="answers"> ${answers.join("")} </div>
                 </div>`
-                    );
-                }
-            );
-
-
-            quizContainer.innerHTML = output.join('');
-        }
-
-        function showResults() {
-
-
-            const answerContainers = quizContainer.querySelectorAll('.answers');
-
-
-            let numCorrect = 0;
-
-
-            myQuestions.forEach((currentQuestion, questionNumber) => {
-
-
-                const answerContainer = answerContainers[questionNumber];
-                const selector = `input[name=question${questionNumber}]:checked`;
-                const userAnswer = (answerContainer.querySelector(selector) || {}).value;
-
-
-                if (userAnswer === currentQuestion.correctAnswer) {
-
-                    numCorrect++;
-
-
-                    answerContainers[questionNumber].style.color = 'lightgreen';
-                }
-
-                else {
-
-                    answerContainers[questionNumber].style.color = 'red';
-                }
-            });
-
-
-            resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
-        }
-
-        function showSlide(n) {
-            slides[currentSlide].classList.remove('active-slide');
-            slides[n].classList.add('active-slide');
-            currentSlide = n;
-            if (currentSlide === 0) {
-                previousButton.style.display = 'none';
+                );
             }
+        );
+
+
+        quizContainer.innerHTML = output.join('');
+    }
+
+    function showResults() {
+
+
+        const answerContainers = quizContainer.querySelectorAll('.answers');
+
+
+        let numCorrect = 0;
+
+
+        myQuestions.forEach((currentQuestion, questionNumber) => {
+
+
+            const answerContainer = answerContainers[questionNumber];
+            const selector = `input[name=question${questionNumber}]:checked`;
+            const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+
+                
+            if (userAnswer === currentQuestion.correctAnswer) {
+
+                numCorrect++;
+
+
+                answerContainers[questionNumber].style.color = 'lightgreen';
+            }
+
             else {
-                previousButton.style.display = 'inline-block';
+
+                answerContainers[questionNumber].style.color = 'red';
             }
-            if (currentSlide === slides.length - 1) {
-                nextButton.style.display = 'none';
-                submitButton.style.display = 'inline-block';
-            }
-            else {
-                nextButton.style.display = 'inline-block';
-                submitButton.style.display = 'none';
-            }
+        });
+
+
+        resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+    }
+
+    function showSlide(n) {
+        slides[currentSlide].classList.remove('active-slide');
+        slides[n].classList.add('active-slide');
+        currentSlide = n;
+        if (currentSlide === 0) {
+            previousButton.style.display = 'none';
         }
-
-        function showNextSlide() {
-            showSlide(currentSlide + 1);
+        else {
+            previousButton.style.display = 'inline-block';
         }
-
-        function showPreviousSlide() {
-            showSlide(currentSlide - 1);
+        if (currentSlide === slides.length - 1) {
+            nextButton.style.display = 'none';
+            submitButton.style.display = 'inline-block';
         }
+        else {
+            nextButton.style.display = 'inline-block';
+            submitButton.style.display = 'none';
+        }
+    }
+
+    function showNextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    function showPreviousSlide() {
+        showSlide(currentSlide - 1);
+    }
+
+    buildQuiz();
+
+    const previousButton = document.getElementById("previous");
+    const nextButton = document.getElementById("next");
+    const slides = document.querySelectorAll(".slide");
+    let currentSlide = 0;
+
+    showSlide(currentSlide);
+
+    submitButton.addEventListener('click', showResults);
+    previousButton.addEventListener("click", showPreviousSlide);
+    nextButton.addEventListener("click", showNextSlide);
 
 
-
-
-        buildQuiz();
-
-        const previousButton = document.getElementById("previous");
-        const nextButton = document.getElementById("next");
-        const slides = document.querySelectorAll(".slide");
-        let currentSlide = 0;
-
-
-        showSlide(currentSlide);
-
-        submitButton.addEventListener('click', showResults);
-        previousButton.addEventListener("click", showPreviousSlide);
-        nextButton.addEventListener("click", showNextSlide);
-
-        var questionTimerLimit = 15;
-        var count = questionTimerLimit;
-        var interval = setInterval(function () {
-            count--;
-            document.getElementById('safeTimer').innerHTML = count;
-            if (count === 0) {
-                showNextSlide();
-                count = questionTimerLimit;
-              //  clearInterval(interval);
-               document.getElementById('safeTimer').innerHTML = 'Time is up!';
-            }
-        }, 1000);
-    
-
+    var questionTimerLimit = 15;
+    var count = questionTimerLimit;
+    var interval = setInterval(function () {
+        count--;
+        document.getElementById('safeTimer').innerHTML = count;
+        if (count === 0) {
+            showNextSlide();
+            count = questionTimerLimit;
+            //  clearInterval(interval);
+            document.getElementById('safeTimer').innerHTML = 'Time is up!';
+        }
+    }, 1000);
 }
 
 
