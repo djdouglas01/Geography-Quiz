@@ -21,6 +21,9 @@ h1 {
     margin-top: 100px;
     height: 100%;
     width: 100%;
+    text-align: center;
+    background-color: #279;
+    color: white;
 
 }
 
@@ -29,8 +32,12 @@ h1 {
     text-align: left;
     display: inline-block;
     height: 100%;
-    margin-bottom: 100px;
-    font-size: 20px;
+    width: 100%;
+    margin-bottom: 50px;
+    font-size: 25px;
+    border: 1px solid black;
+    padding: 10px;
+
 }
 
 .answers label {
@@ -44,11 +51,10 @@ button {
     background-color: #279;
     color: #fff;
     border: 0px;
-    border-radius: 3px;
+    border-radius: 100px;
     padding: 20px;
     cursor: pointer;
-    margin-top: 200px;
-
+    margin-top: 250px;
 }
 
 button:hover {
@@ -63,6 +69,7 @@ button:hover {
     z-index: 1;
     opacity: 0;
     transition: opacity 0.5s;
+    margin-top: 100px;
 }
 
 .active-slide {
@@ -72,8 +79,10 @@ button:hover {
 
 .quiz-container {
     height: 100px;
-    margin-top: 50px;
+    margin-top: 100px;
     display: flex;
+
+
 }
 
 .navbar {
@@ -113,6 +122,18 @@ button:hover {
 .radio {
     color: black;
     border-radius: 50%;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
+footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: black;
+    text-align: center;
+    margin-top: 300px;
+    margin-bottom: auto;
+    display: inline-block;
+    height: 50px;
+
+}
