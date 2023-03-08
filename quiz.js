@@ -108,6 +108,7 @@ window.onload = function () {
     const resultsContainer = document.getElementById('results');
     const submitButton = document.getElementById('submit');
     const nextButton = document.getElementById("next");
+    let answerContainers;
     let slides;
 
 
@@ -116,10 +117,10 @@ window.onload = function () {
     let count = questionTimerLimit;
 
 
-    let interval = setInterval(function () {
+    let countdownTimer = setInterval(function () {
         count--;
         document.getElementById('safeTimer').innerHTML = count;
-        if (count === 0) {
+        if (count === 0 && currentSlide) {
             showNextSlide();
             count = questionTimerLimit;
             document.getElementById('safeTimer').innerHTML = 'Time is up!';
@@ -169,73 +170,111 @@ window.onload = function () {
         slides = document.querySelectorAll(".slide");
     }
 
-    function showResults() {
+    function finalResults() {
+        quizContainer.querySelectorAll(".slide").forEach((slide) => slide.style.display = "none");
 
+        
+        const correctAnswers = [];
 
-        const answerContainers = quizContainer.querySelectorAll('.answers');
-
-
-        let numCorrect = 0;
-
-
-        myQuestions.forEach((currentQuestion, questionNumber) => {
-
-
-            const answerContainer = answerContainers[questionNumber];
-            const selector = `input[name=question${questionNumber}]:checked`;
+        myQuestions.forEach((currentQuestion, questionIndex) => {
+            const answerContainer = answerContainers[questionIndex];
+            const selector = `input[name=question${questionIndex}]:checked`;
             const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
 
 
             if (userAnswer === currentQuestion.correctAnswer) {
 
-                numCorrect++;
+                correctAnswers.push({ id: questionIndex, userAnswer, rightAnswer: currentQuestion.correctAnswer, color: `green`})
 
 
-                answerContainers[questionNumber].style.color = 'lightgreen';
             }
 
             else {
 
-                answerContainers[questionNumber].style.color = 'red';
+                correctAnswers.push({ id: questionIndex, userAnswer, rightAnswer: currentQuestion.correctAnswer, color: `red`})
             }
+            
         });
+        quizContainer.innerHTML = "<ol><li>Answer: C</li></ol>"
+
+    function showResults() {
+
+                clearInterval(countdownTimer);
+                document.getElementById('safeTimer').style.display = 'none';
 
 
-        resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
-    }
+
+                let numCorrect = 0;
+
+
+                myQuestions.forEach((currentQuestion, questionIndex) => {
+
+
+                    const answerContainer = answerContainers[questionIndex];
+                    const selector = `input[name=question${questionIndex}]:checked`;
+                    const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+
+
+                    if (userAnswer === currentQuestion.correctAnswer) {
+
+                        numCorrect++;
+
+                        answerContainers[questionIndex].style.color = 'lightgreen';
+                    }
+
+                    else {
+                       
+                        answerContainers[questionIndex].style.color = 'red';
+
+                    }
+                });
+
+
+                resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+
+                finalResults();
+            }
 
     function showSlide(n) {
-        slides[currentSlide].classList.remove('active-slide');
-        slides[n].classList.add('active-slide');
-        currentSlide = n;
+                slides[currentSlide].classList.remove('active-slide');
+                slides[n].classList.add('active-slide');
+                currentSlide = n;
 
-        if (currentSlide === slides.length - 1) {
-            nextButton.style.display = 'none';
-            submitButton.style.display = 'inline-block';
-        }
-        else {
-            nextButton.style.display = 'inline-block';
-            submitButton.style.display = 'none';
-        }
+                if (currentSlide === slides.length - 1) {
+                    nextButton.style.display = 'none';
+                    submitButton.style.display = 'inline-block';
+                }
+                else {
+                    nextButton.style.display = 'inline-block';
+                    submitButton.style.display = 'none';
+                }
 
-        // if current slide is greater than the length of slides
-        // then we want to stop the timer
-    }
+                // if current slide is greater than the length of slides
+                // then we want to stop the timer
+            }
 
     function showNextSlide() {
-        showSlide(currentSlide + 1);
-        count = questionTimerLimit;
-    }
+                const newCurrentSlide = currentSlide + 1
+                if (newCurrentSlide > slides.length - 1) {
+                    showResults();
+                }
+                else {
+                    showSlide(newCurrentSlide);
+                    count = questionTimerLimit;
+                }
+
+            }
 
 
 
     buildQuiz();
 
-    
 
-    showSlide(currentSlide);
-}
+
+        showSlide(currentSlide);
+    }
 
 
 
