@@ -132,6 +132,7 @@ window.onload = function () {
     submitButton.addEventListener('click', showResults);
     nextButton.addEventListener("click", showNextSlide);
 
+    // form even listener
 
     // methods
     function buildQuiz() {
@@ -305,3 +306,8 @@ window.onload = function () {
 
 
 // disable next question button until question is answered - event listenter
+// answer div (<div class="answers">) could become a form element instead (<form class="answers">)
+// grab all forms and add an eventlistener an onchange event listener to the form
+// loop through all the inputs of type radio inside a form (querySelectorAll(input[name=question${questionIndex}]:checked))
+// and check to see if one is checked
+// if one is checked un-disabled the next button
