@@ -107,8 +107,30 @@ window.onload = function () {
     const quizContainer = document.getElementById('quiz');
     const resultsContainer = document.getElementById('results');
     const submitButton = document.getElementById('submit');
+    const nextButton = document.getElementById("next");
+    let slides;
+
+
+    let currentSlide = 0;
+    let questionTimerLimit = 15;
+    let count = questionTimerLimit;
+
+
+    let interval = setInterval(function () {
+        count--;
+        document.getElementById('safeTimer').innerHTML = count;
+        if (count === 0) {
+            showNextSlide();
+            count = questionTimerLimit;
+            document.getElementById('safeTimer').innerHTML = 'Time is up!';
+        }
+    }, 1000);
+
 
     // event listeners
+    submitButton.addEventListener('click', showResults);
+    nextButton.addEventListener("click", showNextSlide);
+
 
     // methods
     function buildQuiz() {
@@ -143,8 +165,8 @@ window.onload = function () {
             }
         );
 
-
         quizContainer.innerHTML = output.join('');
+        slides = document.querySelectorAll(".slide");
     }
 
     function showResults() {
@@ -164,7 +186,7 @@ window.onload = function () {
             const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
 
-                
+
             if (userAnswer === currentQuestion.correctAnswer) {
 
                 numCorrect++;
@@ -188,13 +210,6 @@ window.onload = function () {
         slides[n].classList.add('active-slide');
         currentSlide = n;
 
-        if (currentSlide === 0) {
-            previousButton.style.display = 'none';
-        }
-        else {
-            previousButton.style.display = 'inline-block';
-        }
-
         if (currentSlide === slides.length - 1) {
             nextButton.style.display = 'none';
             submitButton.style.display = 'inline-block';
@@ -210,50 +225,18 @@ window.onload = function () {
 
     function showNextSlide() {
         showSlide(currentSlide + 1);
-        // if someones clicks next slide
-        // the count should reset
+        count = questionTimerLimit;
     }
 
-    function showPreviousSlide() {
-        showSlide(currentSlide - 1);
-        // not sure about the timer behaviour if someone wants to go back?
-        // maybe just gives you another 15 secs?
-    }
+
 
     buildQuiz();
 
-    // add these to globals ^
-    const previousButton = document.getElementById("previous");
-    const nextButton = document.getElementById("next");
-    const slides = document.querySelectorAll(".slide");
-    let currentSlide = 0;
+    
 
     showSlide(currentSlide);
-
-    // add these to eventlisteners ^
-    submitButton.addEventListener('click', showResults);
-    previousButton.addEventListener("click", showPreviousSlide);
-    nextButton.addEventListener("click", showNextSlide);
-
-
-    // add these to globals ^
-    // use let instead of var
-    var questionTimerLimit = 15;
-    var count = questionTimerLimit;
-
-    // i'd add this to globals as well
-    // use let instead of var
-    var interval = setInterval(function () {
-        count--;
-        document.getElementById('safeTimer').innerHTML = count;
-        if (count === 0) {
-            showNextSlide();
-            count = questionTimerLimit;
-            //  clearInterval(interval);
-            document.getElementById('safeTimer').innerHTML = 'Time is up!';
-        }
-    }, 1000);
 }
+
 
 
 // 2. Want to show the answer to each question after the question is answered as well as the final score at the end (which it already has)
