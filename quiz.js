@@ -168,12 +168,13 @@ window.onload = function () {
 
         quizContainer.innerHTML = output.join('');
         slides = document.querySelectorAll(".slide");
+        answerContainers = document.querySelectorAll(".answers");
     }
 
     function finalResults() {
         quizContainer.querySelectorAll(".slide").forEach((slide) => slide.style.display = "none");
 
-        
+
         const correctAnswers = [];
 
         myQuestions.forEach((currentQuestion, questionIndex) => {
@@ -185,87 +186,102 @@ window.onload = function () {
 
             if (userAnswer === currentQuestion.correctAnswer) {
 
-                correctAnswers.push({ id: questionIndex, userAnswer, rightAnswer: currentQuestion.correctAnswer, color: `green`})
+                correctAnswers.push({ id: questionIndex, userAnswer, rightAnswer: currentQuestion.correctAnswer, color: `green` })
 
 
             }
 
             else {
 
-                correctAnswers.push({ id: questionIndex, userAnswer, rightAnswer: currentQuestion.correctAnswer, color: `red`})
+                correctAnswers.push({ id: questionIndex, userAnswer, rightAnswer: currentQuestion.correctAnswer, color: `red` })
             }
-            
+
         });
-        quizContainer.innerHTML = "<ol><li>Answer: C</li></ol>"
+
+        const quizHTML = correctAnswers.map(answer => {
+            return `
+            <li>
+            <p>Answer: ${answer.rightAnswer}</p>
+            <p>Your Answer: <span style="color: ${answer.color}"> ${answer.userAnswer} </span> </p>
+            </li>
+            `
+        })
+
+        quizContainer.innerHTML = `
+        <ol class="correct-answers">
+            ${quizHTML.join('')}
+            </ol> 
+            `;
+    }
 
     function showResults() {
 
-                clearInterval(countdownTimer);
-                document.getElementById('safeTimer').style.display = 'none';
+        clearInterval(countdownTimer);
+        document.getElementById('safeTimer').style.display = 'none';
 
 
 
-                let numCorrect = 0;
+        let numCorrect = 0;
 
 
-                myQuestions.forEach((currentQuestion, questionIndex) => {
+        myQuestions.forEach((currentQuestion, questionIndex) => {
 
 
-                    const answerContainer = answerContainers[questionIndex];
-                    const selector = `input[name=question${questionIndex}]:checked`;
-                    const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+            const answerContainer = answerContainers[questionIndex];
+            const selector = `input[name=question${questionIndex}]:checked`;
+            const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
 
 
-                    if (userAnswer === currentQuestion.correctAnswer) {
+            if (userAnswer === currentQuestion.correctAnswer) {
 
-                        numCorrect++;
+                numCorrect++;
 
-                        answerContainers[questionIndex].style.color = 'lightgreen';
-                    }
-
-                    else {
-                       
-                        answerContainers[questionIndex].style.color = 'red';
-
-                    }
-                });
-
-
-                resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
-
-                finalResults();
+                answerContainers[questionIndex].style.color = 'lightgreen';
             }
+
+            else {
+
+                answerContainers[questionIndex].style.color = 'red';
+
+            }
+        });
+
+
+        resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+
+        finalResults();
+    }
 
     function showSlide(n) {
-                slides[currentSlide].classList.remove('active-slide');
-                slides[n].classList.add('active-slide');
-                currentSlide = n;
+        slides[currentSlide].classList.remove('active-slide');
+        slides[n].classList.add('active-slide');
+        currentSlide = n;
 
-                if (currentSlide === slides.length - 1) {
-                    nextButton.style.display = 'none';
-                    submitButton.style.display = 'inline-block';
-                }
-                else {
-                    nextButton.style.display = 'inline-block';
-                    submitButton.style.display = 'none';
-                }
+        if (currentSlide === slides.length - 1) {
+            nextButton.style.display = 'none';
+            submitButton.style.display = 'inline-block';
+        }
+        else {
+            nextButton.style.display = 'inline-block';
+            submitButton.style.display = 'none';
+        }
 
-                // if current slide is greater than the length of slides
-                // then we want to stop the timer
-            }
+        // if current slide is greater than the length of slides
+        // then we want to stop the timer
+    }
 
     function showNextSlide() {
-                const newCurrentSlide = currentSlide + 1
-                if (newCurrentSlide > slides.length - 1) {
-                    showResults();
-                }
-                else {
-                    showSlide(newCurrentSlide);
-                    count = questionTimerLimit;
-                }
+        const newCurrentSlide = currentSlide + 1
+        if (newCurrentSlide > slides.length - 1) {
+            showResults();
+        }
+        else {
+            showSlide(newCurrentSlide);
+            count = questionTimerLimit;
+        }
 
-            }
+    }
 
 
 
@@ -273,8 +289,8 @@ window.onload = function () {
 
 
 
-        showSlide(currentSlide);
-    }
+    showSlide(currentSlide);
+}
 
 
 
@@ -288,3 +304,4 @@ window.onload = function () {
 // 5. There's still a 15sec timer, and if you don't submit an answer after 15 seconds it will do steps 3 and 4
 
 
+// disable next question button until question is answered - event listenter
