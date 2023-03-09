@@ -120,12 +120,13 @@ window.onload = function () {
     let countdownTimer = setInterval(function () {
         count--;
         document.getElementById('safeTimer').innerHTML = count;
-        if (count === 0 && currentSlide) {
+        if (count === 0) {
             showNextSlide();
             count = questionTimerLimit;
             document.getElementById('safeTimer').innerHTML = 'Time is up!';
         }
     }, 1000);
+
 
 
     // event listeners
