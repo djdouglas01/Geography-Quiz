@@ -188,8 +188,8 @@ window.onload = function () {
 
             if (userAnswer === currentQuestion.correctAnswer) {
 
-                correctAnswers.push({ id: questionIndex, userAnswer, rightAnswer: currentQuestion.correctAnswer, color: `green` })
-
+                correctAnswers.push({ id: questionIndex, userAnswer, rightAnswer: currentQuestion.correctAnswer, color: `lightgreen` })
+                
 
             }
 
