@@ -9,6 +9,10 @@ body {
     background-color: #f8f6f0;
 }
 
+.finalAnswers {
+    padding: 5px;
+}
+
 h1 {
     font-weight: 300;
     margin-top: 25px;
@@ -54,8 +58,8 @@ button {
     border-radius: 100px;
     padding: 20px;
     cursor: pointer;
-    margin-top: 400px;
-    position: static;
+    margin-top: 350px;
+    justify-content: center;
 }
 
 button:hover {
@@ -145,4 +149,5 @@ footer {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     text-align: left;
+    padding: 5px;
 }
