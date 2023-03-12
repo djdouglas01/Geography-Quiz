@@ -55,6 +55,7 @@ button {
     padding: 20px;
     cursor: pointer;
     margin-top: 300px;
+    position: static;
 }
 
 button:hover {
