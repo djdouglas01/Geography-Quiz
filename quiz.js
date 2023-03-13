@@ -127,8 +127,6 @@ window.onload = function () {
         }
     }, 1000);
 
-
-
     // event listeners
     submitButton.addEventListener('click', showResults);
     nextButton.addEventListener("click", showNextSlide);
@@ -189,14 +187,14 @@ window.onload = function () {
 
             if (userAnswer === currentQuestion.correctAnswer) {
 
-                correctAnswers.push({ id: questionIndex, userAnswer, rightAnswer: currentQuestion.correctAnswer, color: `lightgreen` })
+                correctAnswers.push({ id: questionIndex, userAnswer, question: currentQuestion.question, rightAnswer: currentQuestion.correctAnswer, color: `lightgreen` })
 
 
             }
 
             else {
 
-                correctAnswers.push({ id: questionIndex, userAnswer, rightAnswer: currentQuestion.correctAnswer, color: `red` })
+                correctAnswers.push({ id: questionIndex, userAnswer, question: currentQuestion.question, rightAnswer: currentQuestion.correctAnswer, color: `red` })
             }
 
         });
@@ -204,12 +202,11 @@ window.onload = function () {
         const quizHTML = correctAnswers.map(answer => {
             return `
             <li>
-            <p>Question: ${myQuestions.question}: Correct Answer: ${answer.rightAnswer}</p>
+            <p>Question: ${answer.question}: Correct Answer: ${answer.rightAnswer}</p>
             <p>Your Answer: <span style="color: ${answer.color}"> ${answer.userAnswer} </span> </p>
             </li>
             `
         });
-
 
         quizContainer.innerHTML = `
         <ol class="correct-answers">
