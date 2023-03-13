@@ -201,7 +201,7 @@ window.onload = function () {
 
         const quizHTML = correctAnswers.map(answer => {
             return `
-            <li>
+            <li class="finalResults">
             <p>Question: ${answer.question}: Correct Answer: ${answer.rightAnswer}</p>
             <p>Your Answer: <span style="color: ${answer.color}"> ${answer.userAnswer} </span> </p>
             </li>

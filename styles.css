@@ -61,6 +61,10 @@ button {
     margin-top: 350px;
 }
 
+.finalResults {
+    font-size: 13pt;
+}
+
 button:hover {
     background-color: #38a;
 }
