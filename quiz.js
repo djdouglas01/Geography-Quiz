@@ -180,6 +180,7 @@ window.onload = function () {
         const correctAnswers = [];
 
         myQuestions.forEach((currentQuestion, questionIndex) => {
+            
             const answerContainer = answerContainers[questionIndex];
             const selector = `input[name=question${questionIndex}]:checked`;
             const userAnswer = (answerContainer.querySelector(selector) || {}).value;
@@ -189,7 +190,7 @@ window.onload = function () {
             if (userAnswer === currentQuestion.correctAnswer) {
 
                 correctAnswers.push({ id: questionIndex, userAnswer, rightAnswer: currentQuestion.correctAnswer, color: `lightgreen` })
-                
+
 
             }
 
@@ -203,11 +204,12 @@ window.onload = function () {
         const quizHTML = correctAnswers.map(answer => {
             return `
             <li>
-            <p>Answer: ${answer.rightAnswer}</p>
+            <p>Question: ${myQuestions.question}: Correct Answer: ${answer.rightAnswer}</p>
             <p>Your Answer: <span style="color: ${answer.color}"> ${answer.userAnswer} </span> </p>
             </li>
             `
-        })
+        });
+
 
         quizContainer.innerHTML = `
         <ol class="correct-answers">
@@ -284,7 +286,6 @@ window.onload = function () {
         }
 
     }
-
 
 
     buildQuiz();
