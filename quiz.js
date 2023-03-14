@@ -111,7 +111,6 @@ window.onload = function () {
     let answerContainers;
     let slides;
 
-
     let currentSlide = 0;
     let questionTimerLimit = 15;
     let count = questionTimerLimit;
@@ -131,8 +130,6 @@ window.onload = function () {
     submitButton.addEventListener('click', showResults);
     nextButton.addEventListener("click", showNextSlide);
 
-    // form even listener
-
     // methods
     function buildQuiz() {
 
@@ -146,7 +143,6 @@ window.onload = function () {
 
                 for (letter in currentQuestion.answers) {
 
-
                     answers.push(
                         `<label>
                     <input type="radio" class="radio" name="question${questionNumber}" value="${letter}">
@@ -155,7 +151,6 @@ window.onload = function () {
                   </label>`
                     );
                 }
-
 
                 output.push(
                     `<div class="slide">
@@ -174,7 +169,6 @@ window.onload = function () {
     function finalResults() {
         quizContainer.querySelectorAll(".slide").forEach((slide) => slide.style.display = "none");
 
-
         const correctAnswers = [];
 
         myQuestions.forEach((currentQuestion, questionIndex) => {
@@ -183,12 +177,9 @@ window.onload = function () {
             const selector = `input[name=question${questionIndex}]:checked`;
             const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
-
-
             if (userAnswer === currentQuestion.correctAnswer) {
 
-                correctAnswers.push({ id: questionIndex, userAnswer, question: currentQuestion.question, rightAnswer: currentQuestion.correctAnswer, color: `lightgreen` })
-
+                correctAnswers.push({ id: questionIndex, userAnswer, question: currentQuestion.question, rightAnswer: currentQuestion.correctAnswer, color: `green` })
 
             }
 
@@ -220,25 +211,20 @@ window.onload = function () {
         clearInterval(countdownTimer);
         document.getElementById('safeTimer').style.display = 'none';
 
-
-
         let numCorrect = 0;
 
 
         myQuestions.forEach((currentQuestion, questionIndex) => {
 
-
             const answerContainer = answerContainers[questionIndex];
             const selector = `input[name=question${questionIndex}]:checked`;
             const userAnswer = (answerContainer.querySelector(selector) || {}).value;
-
-
 
             if (userAnswer === currentQuestion.correctAnswer) {
 
                 numCorrect++;
 
-                answerContainers[questionIndex].style.color = 'lightgreen';
+                answerContainers[questionIndex].style.color = 'green';
             }
 
             else {
@@ -247,7 +233,6 @@ window.onload = function () {
 
             }
         });
-
 
         resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
 
@@ -268,8 +253,6 @@ window.onload = function () {
             submitButton.style.display = 'none';
         }
 
-        // if current slide is greater than the length of slides
-        // then we want to stop the timer
     }
 
     function showNextSlide() {
@@ -284,29 +267,7 @@ window.onload = function () {
 
     }
 
-
     buildQuiz();
-
-
 
     showSlide(currentSlide);
 }
-
-
-
-// 2. Want to show the answer to each question after the question is answered as well as the final score at the end (which it already has)
-
-// I would then have some functionality where
-// 1. to choose an answer/ goto next question, you have to choose an option/ answer.
-// 2. You then can submit the answer,
-// 3. When you have submitted it shows/ hightlights the correct answer, if you are correct you get 1 point, wrong or took too long you get 0 points
-// 4. then after sometime it will take you to the next question, a reset the timer
-// 5. There's still a 15sec timer, and if you don't submit an answer after 15 seconds it will do steps 3 and 4
-
-
-// disable next question button until question is answered - event listenter
-// answer div (<div class="answers">) could become a form element instead (<form class="answers">)
-// grab all forms and add an eventlistener an onchange event listener to the form
-// loop through all the inputs of type radio inside a form (querySelectorAll(input[name=question${questionIndex}]:checked))
-// and check to see if one is checked
-// if one is checked un-disabled the next button
