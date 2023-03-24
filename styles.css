@@ -176,7 +176,7 @@ footer {
 
 @media screen and (max-width: 500px) {
     #results {
-        margin-top: 800px;
+        margin-top: 1000px;
         font-size: 15pt;
     }
 
@@ -196,14 +196,14 @@ footer {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         text-align: left;
-        padding: 20PX;
+        padding: 50PX;
     }
     
 }
 
 @media screen and (max-width: 300px) {
     #results {
-        margin-top: 1000px;
+        margin-top: 1250px;
         font-size: 15pt;
     }
 
@@ -211,7 +211,7 @@ footer {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         text-align: left;
-        padding: 20PX;
+        padding: 50PX;
     }
 
     button {
