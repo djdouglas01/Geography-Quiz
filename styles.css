@@ -157,6 +157,7 @@ footer {
 #results {
     margin-top: 600px;
     font-size: 20pt;
+    display: block;
 }
 
 @media screen and (max-width: 1300px) {
@@ -170,5 +171,31 @@ footer {
         grid-template-columns: repeat(2, 1fr);
         text-align: left;
         padding: 20PX;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #results {
+        margin-top: 800px;
+        font-size: 15pt;
+    }
+
+    button {
+        font-family: 'Work Sans', sans-serif;
+        font-size: 22px;
+        background-color: #279;
+        color: #fff;
+        border: 0px;
+        border-radius: 100px;
+        padding: 20px;
+        cursor: pointer;
+        margin-top: 350px;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    #results {
+        margin-top: 1000px;
+        font-size: 15pt;
     }
 }
