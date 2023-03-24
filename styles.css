@@ -145,6 +145,9 @@ footer {
     margin-bottom: auto;
     display: inline-block;
     height: 50px;
+    background-color: darkgray;
+    justify-content: center;
+    line-height: 50px;
 
 }
 
@@ -152,11 +155,18 @@ footer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     text-align: left;
+
 }
+
 
 #results {
     margin-top: 300px;
     font-size: 20pt;
+}
+
+.content {
+    width: 100%;
+    height: 100%
 }
 
 
@@ -198,7 +208,7 @@ footer {
         text-align: left;
         padding: 50PX;
     }
-    
+
 }
 
 @media screen and (max-width: 300px) {

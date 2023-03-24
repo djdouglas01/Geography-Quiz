@@ -172,7 +172,7 @@ window.onload = function () {
         const correctAnswers = [];
 
         myQuestions.forEach((currentQuestion, questionIndex) => {
-            
+
             const answerContainer = answerContainers[questionIndex];
             const selector = `input[name=question${questionIndex}]:checked`;
             const userAnswer = (answerContainer.querySelector(selector) || {}).value;
