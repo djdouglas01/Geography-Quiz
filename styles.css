@@ -155,10 +155,10 @@ footer {
 }
 
 #results {
-    margin-top: 600px;
+    margin-top: 300px;
     font-size: 20pt;
-    display: block;
 }
+
 
 @media screen and (max-width: 1300px) {
     #results {
