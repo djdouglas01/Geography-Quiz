@@ -154,23 +154,21 @@ footer {
     text-align: left;
 }
 
-@media screen and (max-width: 1000px) {
-    #submit {
-        font-family: 'Work Sans', sans-serif;
-        font-size: 22px;
-        background-color: #279;
-        color: #fff;
-        border: 0px;
-        border-radius: 100px;
-        padding: 20px;
-        cursor: pointer;
+#results {
+    margin-top: 600px;
+    font-size: 20pt;
+}
+
+@media screen and (max-width: 1300px) {
+    #results {
         margin-top: 600px;
+        font-size: 15pt;
     }
 
     .correct-answers {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         text-align: left;
-        padding: 20px;
+        padding: 20PX;
     }
 }

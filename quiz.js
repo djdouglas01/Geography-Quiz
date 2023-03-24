@@ -210,6 +210,7 @@ window.onload = function () {
 
         clearInterval(countdownTimer);
         document.getElementById('safeTimer').style.display = 'none';
+        document.getElementById('submit').style.display = 'none';
 
         let numCorrect = 0;
 
