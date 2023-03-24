@@ -153,3 +153,24 @@ footer {
     grid-template-columns: repeat(2, 1fr);
     text-align: left;
 }
+
+@media screen and (max-width: 1000px) {
+    #submit {
+        font-family: 'Work Sans', sans-serif;
+        font-size: 22px;
+        background-color: #279;
+        color: #fff;
+        border: 0px;
+        border-radius: 100px;
+        padding: 20px;
+        cursor: pointer;
+        margin-top: 600px;
+    }
+
+    .correct-answers {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        text-align: left;
+        padding: 20px;
+    }
+}
