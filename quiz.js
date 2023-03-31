@@ -61,7 +61,7 @@ const myQuestions = [
         correctAnswer: "D"
     },
     {
-        question: "Which river flows through London",
+        question: "Which river flows through London?",
         answers: {
             A: "River Severn",
             B: "River Trent",
@@ -91,7 +91,7 @@ const myQuestions = [
         correctAnswer: "C"
     },
     {
-        question: "Which European city is not located on the Danube River",
+        question: "Which European city is not located on the Danube River?",
         answers: {
             A: "Prague",
             B: "Budapest",
