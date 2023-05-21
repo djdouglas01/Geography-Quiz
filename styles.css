@@ -184,6 +184,7 @@ footer {
         grid-template-columns: repeat(2, 1fr);
         text-align: left;
         padding: 20PX;
+        list-style-position: inside;
     }
 }
 
@@ -211,6 +212,7 @@ footer {
         text-align: left;
         padding: 50PX;
         font-size: 15pt;
+        list-style-position: inside;
     }
 
 }
@@ -227,6 +229,7 @@ footer {
         text-align: left;
         padding: 50PX;
         font-size: 15pt;
+        list-style-position: inside;
     } 
 
     button {
