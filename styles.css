@@ -187,7 +187,7 @@ footer {
 @media screen and (max-width: 500px) {
     #results {
         margin-top: 1000px;
-        font-size: 10pt;
+        font-size: 15pt;
     }
 
     button {
@@ -207,6 +207,7 @@ footer {
         grid-template-columns: repeat(2, 1fr);
         text-align: left;
         padding: 50PX;
+        font-size: 10pt;
     }
 
 }
@@ -214,7 +215,7 @@ footer {
 @media screen and (max-width: 300px) {
     #results {
         margin-top: 1250px;
-        font-size: 10pt;
+        font-size: 15pt;
     }
 
     .correct-answers {
@@ -222,6 +223,7 @@ footer {
         grid-template-columns: repeat(2, 1fr);
         text-align: left;
         padding: 50PX;
+        font-size: 10pt;
     } 
 
     button {
