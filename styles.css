@@ -157,6 +157,7 @@ footer {
     text-align: left;
     padding: 50PX;
     font-size: 15pt;
+    list-style-position: inside;
 
 }
 
