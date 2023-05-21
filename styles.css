@@ -163,7 +163,7 @@ footer {
 
 
 #results {
-    margin-top: 300px;
+    margin-top: 900px;
     font-size: 20pt;
 }
 
@@ -175,7 +175,7 @@ footer {
 
 @media screen and (max-width: 1300px) {
     #results {
-        margin-top: 600px;
+        margin-top: 900px;
         font-size: 15pt;
     }
 
@@ -190,7 +190,7 @@ footer {
 
 @media screen and (max-width: 500px) {
     #results {
-        margin-top: 1500px;
+        margin-top: 1000px;
         font-size: 15pt;
     }
 
