@@ -214,7 +214,7 @@ footer {
 @media screen and (max-width: 300px) {
     #results {
         margin-top: 1250px;
-        font-size: 15pt;
+        font-size: 10pt;
     }
 
     .correct-answers {
