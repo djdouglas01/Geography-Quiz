@@ -155,6 +155,8 @@ footer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     text-align: left;
+    padding: 100PX;
+    font-size: 10pt;
 
 }
 
@@ -206,7 +208,7 @@ footer {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         text-align: left;
-        padding: 50PX;
+        padding: 100PX;
         font-size: 10pt;
     }
 
@@ -222,7 +224,7 @@ footer {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         text-align: left;
-        padding: 50PX;
+        padding: 100PX;
         font-size: 10pt;
     } 
 
